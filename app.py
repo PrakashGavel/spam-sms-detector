@@ -21,13 +21,16 @@ def clean_text(text):
 @app.route("/", methods=["GET", "POST"])
 def index():
     prediction = None
+    sms = ""
+
     if request.method == "POST":
         sms = request.form["sms"]
         cleaned = clean_text(sms)
         vec = vectorizer.transform([cleaned])
         pred = model.predict(vec)[0]
         prediction = "🚫 Spam" if pred == 1 else "✅ Not Spam"
-    return render_template("index.html", prediction=prediction)
+
+    return render_template("index.html", prediction=prediction, sms=sms)
 
 if __name__ == "__main__":
     app.run(debug=True)

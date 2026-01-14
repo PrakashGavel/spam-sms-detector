@@ -14,7 +14,7 @@
     <div class="box">
         <h2>Spam SMS Detector</h2>
         <form method="POST">
-            <textarea name="sms" placeholder="Enter SMS here..." required></textarea><br>
+            <textarea name="sms" placeholder="Enter SMS here..." required>{{ sms }}</textarea>
             <button type="submit">Check</button>
         </form>
         {% if prediction %}
